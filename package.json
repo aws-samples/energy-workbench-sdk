@@ -1,0 +1,37 @@
+{
+  "name": "osdu-workbench-sdk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sdkgen": "openapi-generator-cli generate -i /api/spec/openapi.yaml 0 typescript-axios ./sdk"
+  },
+  "keywords": [],
+  "license": "MIT-0",
+  "dependencies": {
+    "@openapitools/openapi-generator-cli": "^2.7.0",
+    "axios": "^1.4.0",
+    "jsii": "^5.1.8"
+  },
+  "jsii": {
+    "java": {
+      "package": "com.aws.osdu-workbench-sdk",
+      "maven": {
+        "groupId": "com.aws",
+        "artifactId": "osdu-workbench"
+      }
+    },
+    "python": {
+      "distName": "aws.osdu-workbench-sdk",
+      "module": "aws.osdu_workbench_sdk"
+    },
+    "dotnet": {
+      "namespace": "aws.OsduWorkbenchSdk",
+      "packageId": "aws.OsduWorkbenchSdk"
+    }
+  },
+  "author": {
+    "name": "Sam Ward Biddle [AWS for Energy]"
+  }
+}
