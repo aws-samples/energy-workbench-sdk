@@ -1,45 +1,49 @@
 # 📗 README
 
-This package contains a unified SDK for OSDU. This SDK is composed of synthesized OpenAPI spec files taken from OSDU microservices. The unified API is compiled into Typescript and then transcompiled using JSII using the `npm run sdkgen` command.
+This package contains a Typescript SDK for the Osdu Search API. It provides TypeScript interfaces generated from the OpenAPI spec, as well as a sample client for making API calls.
 
-## 🛠️ Generate SDK
+## 🛠️ Usage
 
-1. Navigate to the top level directory
-2. Run `npm run sdkgen`
-3. This will output the latest version of the SDK. Navigate to the SDK directory to review the documentation for the SDK itself.
+Install the package:
+npm install osdu-search-sdk
 
-The `generate.js` script will:
+Copy code
 
-- 📂 Find all `.yaml` files in `/api/spec`
-- 🔀 Merge them into a single spec output to `/sdk/merged.yaml`
-- 🏭 Generate a TypeScript SDK to `/sdk`
-- 🪄 Translate the existing SDK from Typescript to additional languages using JSII
+Import and use the SDK:
 
-To use:
+```typescript
+import { OsduSearch, OsduSearchClient } from 'osdu-search-sdk';
 
-- 💾 Install dependencies with `npm install`
-- ⏩ Run the script with `npm run sdkgen`
+const client = new OsduSearchClient();
 
-## 💽 Dependencies
+const query: OsduSearch.QueryRequest = {
+  kind: 'test',
+  limit: 100
+};
 
-- [openapi-generator-cli](https://github.com/OpenAPITools/openapi-generator-cli) - to generate the SDK
-- [axios](https://github.com/axios/axios) - the HTTP client used in the generated SDK
+const result = await client.queryRecords(query);
+See the API documentation for more details.
 
-## ⚙️ Configuration
+📦 Structure
+/src/search/models.ts - Contains the TypeScript interfaces for requests/responses
+index.ts - Exports the SDK contents
+OsduSearchClient - Sample client for calling API
+✨ Features
+Type-safe interfaces for API contracts
+Sample client with methods for API operations
+Promise-based async/await API
+JSDoc annotated
+🤖 Development
+To regenerate the SDK:
 
-The script uses the current working directory to resolve the:
+Copy code
 
-- 📁 Spec input folder
-- 📁 SDK output folder
+npm run generate
+This will re-build the TypeScript interfaces from the OpenAPI spec.
 
-## 👨‍💻 Scripts
-
-- `sdkgen` - Runs the `generate.js` script to generate the SDK
-
-## 🤖 Output
-
-Running the script will generate a TypeScript SDK using [axios](https://github.com/axios/axios) in the `/sdk` folder.
-
-## ✨ Contributing
-
-Contributions to improve the script and README are welcome!
+📚 Resources
+OpenAPI Specification
+REST API Docs
+🙌 Contributing
+Contributions are welcome! Please see the contribution guidelines.
+```
