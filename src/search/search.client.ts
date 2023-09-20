@@ -12,7 +12,7 @@ import {
 /**
  * Client for accessing OSDU Search API.
  */
-export class OsduSearchClient {
+export class SearchClient {
   /**
    * Create SearchClient.
    *
