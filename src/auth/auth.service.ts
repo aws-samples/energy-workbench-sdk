@@ -13,9 +13,9 @@ export class AuthService {
    * @param redirectUri - Redirect URI for authentication
    */
   constructor(
-    private baseURL: string,
-    private clientId: string,
-    private clientSecret: string,
+    public baseURL: string,
+    public clientId: string,
+    public clientSecret: string,
     private redirectUri?: string
   ) {}
 

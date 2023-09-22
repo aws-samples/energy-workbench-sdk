@@ -1,14 +1,25 @@
 {
-  "name": "osdu-workbench-sdk",
+  "name": "osdu-workbench",
   "version": "1.0.0",
-  "description": "A utility software development kit for interacting with OSDU resources programatically.",
-  "main": "./src/index.js",
-  "directories": {
-    "test": "test"
+  "description": "",
+  "main": "dist/index.js",
+  "module": "dist/index.modern.js",
+  "unpkg": "dist/index.umd.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    "require": "./dist/index.js",
+    "default": "./dist/index.modern.js"
   },
-  "compilerOptions": {
-    "module": "esnext",
-    "target": "es2017"
+  "scripts": {
+    "build": "rm -rf dist && tsc",
+    "dev": "tsc --watch --tsconfig tsconfig.json --no-sourcemap"
+  },
+  "keywords": [],
+  "author": "Sam Ward Biddle",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.6.3",
+    "microbundle": "^0.15.0"
   },
   "dependencies": {
     "@aws-sdk/client-cognito-identity-provider": "^3.414.0",
@@ -32,7 +43,7 @@
     "aws-sdk": "^2.1461.0",
     "aws-sign2": "^0.7.0",
     "aws4": "^1.12.0",
-    "axios": "^1.4.0",
+    "axios": "^1.5.0",
     "balanced-match": "^1.0.2",
     "base-64": "^1.0.0",
     "base64-js": "^1.5.1",
@@ -373,10 +384,7 @@
     "yargs-parser": "^21.1.1",
     "zip-stream": "^4.1.0"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "compile": "tsc"
-  },
-  "author": "Sam Ward Biddle (AWS for Energy)",
-  "license": "MIT"
+  "files": [
+    "dist"
+  ]
 }

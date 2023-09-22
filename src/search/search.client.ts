@@ -26,8 +26,9 @@ export class SearchClient {
    * @param request - Search request
    * @returns Promise resolving to search results
    */
+
   async query(request: QueryRequest): Promise<QueryResponse> {
-    const token = await this.auth.getAuthToken();
+    const token = this.auth.clientSecret;
 
     const url = `${this.baseURL}/api/search/v2/query/`;
 
@@ -38,6 +39,10 @@ export class SearchClient {
         "data-partition-id": "osdu",
       },
     };
+
+    console.log(config);
+    console.log(url);
+    console.log(request);
 
     const { data } = await axios.post(url, request, config);
 
