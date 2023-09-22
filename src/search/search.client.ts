@@ -1,24 +1,26 @@
 import axios from "axios";
 
-import { AuthService } from "../auth";
-
 import {
   QueryRequest,
   QueryResponse,
   CursorQueryRequest,
   CursorQueryResponse,
 } from "./search.models";
+import { BaseClient } from "../base";
 
 /**
  * Client for accessing OSDU Search API.
  */
-export class SearchClient {
+export class SearchClient extends BaseClient {
+  baseURL: any;
   /**
    * Create SearchClient.
    *
    * @param auth - AuthService for handling authentication
    */
-  constructor(private auth: AuthService, private baseURL: string) {}
+  constructor(baseURL: string) {
+    super(baseURL);
+  }
 
   /**
    * Search records.
@@ -26,23 +28,18 @@ export class SearchClient {
    * @param request - Search request
    * @returns Promise resolving to search results
    */
-
   async query(request: QueryRequest): Promise<QueryResponse> {
-    const token = this.auth.clientSecret;
+    const auth = await this.getAuthToken();
 
     const url = `${this.baseURL}/api/search/v2/query/`;
 
     const config = {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${auth.clientSecret}`,
         "Content-Type": "application/json",
         "data-partition-id": "osdu",
       },
     };
-
-    console.log(config);
-    console.log(url);
-    console.log(request);
 
     const { data } = await axios.post(url, request, config);
 

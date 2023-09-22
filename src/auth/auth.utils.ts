@@ -26,8 +26,6 @@ export class CognitoToken {
     this.client = new CognitoIdentityProviderClient({
       region: "us-east-1",
     });
-
-    this.fetchToken();
   }
 
   /**
