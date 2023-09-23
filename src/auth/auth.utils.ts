@@ -17,14 +17,16 @@ export class CognitoToken {
    * @param clientId - Cognito client ID
    * @param username - User username
    * @param password - User password
+   * @param cognitoRegion - AWS Cognito Region for auth
    */
   constructor(
     private clientId: string,
     private username: string,
-    private password: string
+    private password: string,
+    public cognitoRegion: string
   ) {
     this.client = new CognitoIdentityProviderClient({
-      region: "us-east-1",
+      region: cognitoRegion,
     });
   }
 

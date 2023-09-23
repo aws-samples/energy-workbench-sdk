@@ -12,14 +12,16 @@ import { BaseClient } from "../base";
  * Client for accessing OSDU Search API.
  */
 export class SearchClient extends BaseClient {
-  baseURL: any;
+  protected baseURL: string;
+  public cognitoRegion: string;
   /**
    * Create SearchClient.
    *
-   * @param auth - AuthService for handling authentication
+   * @param baseURL - Base URL for the OSDU instance in use
+   * @param cognitoRegion - AWS region for the cognito
    */
-  constructor(baseURL: string) {
-    super(baseURL);
+  constructor(baseURL: string, cognitoRegion: string) {
+    super(baseURL, cognitoRegion);
   }
 
   /**

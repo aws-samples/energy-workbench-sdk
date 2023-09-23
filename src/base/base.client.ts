@@ -4,23 +4,25 @@ export abstract class BaseClient {
   protected auth: AuthService;
   protected cognito: CognitoToken;
   protected baseURL: string;
+  public cognitoRegion: string;
   protected token: string;
 
-  constructor(baseURL: string) {
+  constructor(baseURL: string, cognitoRegion: string) {
     this.baseURL = baseURL;
+    this.cognitoRegion = cognitoRegion;
   }
 
   protected async getAuthToken() {
+    const region = this.cognitoRegion;
+
     this.cognito = new CognitoToken(
       process.env.OSDU_CLIENT_ID,
       process.env.OSDU_USERNAME,
-      process.env.OSDU_PASSWORD
+      process.env.OSDU_PASSWORD,
+      region
     );
-    console.log(this.cognito);
 
     const cognitoToken = await this.cognito.fetchToken();
-
-    console.log(cognitoToken);
 
     const auth = new AuthService(
       this.baseURL,
@@ -28,9 +30,7 @@ export abstract class BaseClient {
       cognitoToken
     );
     this.auth = auth;
-    console.log(this.auth);
 
-    // Also return it
     return auth;
   }
 }

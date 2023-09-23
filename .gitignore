@@ -1,12 +1,6 @@
 # Dependencies
 node_modules
 
-# Production build 
-dist
-
-# TypeScript build output
-lib
-
 # Logs and metrics
 logs
 *.log

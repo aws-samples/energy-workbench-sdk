@@ -12,23 +12,32 @@ Copy code
 Import and use the SDK:
 
 ```typescript
-import { OsduSearch, OsduSearchClient } from 'osdu-search-sdk';
+import { Search } from "osdu-workbench";
+import { basename } from "path";
 
-const client = new OsduSearchClient();
+const baseURL = "https://osdu.osdupsdemo.install.osdu.aws";
 
-const query: OsduSearch.QueryRequest = {
-  kind: 'test',
-  limit: 100
-};
+async function testWorkbench(baseURL) {
+  const search = new Search.SearchClient(baseURL, "us-east-1");
 
-const result = await client.queryRecords(query);
-See the API documentation for more details.
+  const query = await search.query({
+    kind: "osdu:wks:master-data--Well:1.0.0",
+  });
 
-📦 Structure
-/src/search/models.ts - Contains the TypeScript interfaces for requests/responses
-index.ts - Exports the SDK contents
-OsduSearchClient - Sample client for calling API
-✨ Features
+  console.log(query);
+}
+
+testWorkbench(baseURL);
+```
+
+## 📦 Structure
+
+` /src/search/models.ts`` - Contains the TypeScript interfaces for requests/responses
+ `index.ts`- Exports the SDK contents
+`base/base.client.ts`- instantiates a base class for all other client modules. This gathers environmental variables`SearchClient` - Sample client for calling API
+
+## ✨ Features
+
 Type-safe interfaces for API contracts
 Sample client with methods for API operations
 Promise-based async/await API
@@ -46,4 +55,7 @@ OpenAPI Specification
 REST API Docs
 🙌 Contributing
 Contributions are welcome! Please see the contribution guidelines.
+
+```
+
 ```
