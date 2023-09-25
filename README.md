@@ -5,7 +5,11 @@ This package contains a Typescript SDK for the Osdu Search API. It provides Type
 ## 🛠️ Usage
 
 Install the package:
-npm install osdu-search-sdk
+
+```sh
+npm install
+
+```
 
 Copy code
 
