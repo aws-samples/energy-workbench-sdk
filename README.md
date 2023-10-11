@@ -7,7 +7,7 @@ This package contains a Typescript SDK for the Osdu Search API. It provides Type
 Install dependencies:
 
 ```sh
-yarn
+npm install
 
 ```
 
