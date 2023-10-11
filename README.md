@@ -22,7 +22,7 @@ import { basename } from "path";
 const baseURL = "https://osdu.osdupsdemo.install.osdu.aws";
 
 async function testWorkbench(baseURL) {
-  const search = new Search.SearchClient(baseURL, "us-east-1");
+  const search = new Search.GroupClient(baseURL, "us-east-1");
 
   const query = await search.query({
     kind: "osdu:wks:master-data--Well:1.0.0",
@@ -38,7 +38,7 @@ testWorkbench(baseURL);
 
 ` /src/search/models.ts`` - Contains the TypeScript interfaces for requests/responses
  `index.ts`- Exports the SDK contents
-`base/base.client.ts`- instantiates a base class for all other client modules. This gathers environmental variables`SearchClient` - Sample client for calling API
+`base/base.client.ts`- instantiates a base class for all other client modules. This gathers environmental variables`GroupClient` - Sample client for calling API
 
 ## ✨ Features
 
