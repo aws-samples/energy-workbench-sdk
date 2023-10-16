@@ -126,6 +126,7 @@ export interface QueryRequest {
    * @member {Array<string>} returnedFields
    */
   returnedFields?: Array<string>;
+
 }
 
 export interface QueryResponse {
