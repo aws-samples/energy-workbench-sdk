@@ -1,9 +1,10 @@
 import * as models from "./group.models";
 import * as types from "./group.types";
-import { GroupClient } from "./group.client";
+import { GroupList, GroupAdd } from "./group.client";
 
-export const Group = {
+export const GROUP = {
   ...models,
   ...types,
-  GroupClient,
+  GroupList: GroupList,
+  GroupAdd: GroupAdd
 };
