@@ -1,4 +1,5 @@
 import { CognitoIdentityProviderClient, AdminCreateUserCommand, AdminSetUserPasswordCommand } from "@aws-sdk/client-cognito-identity-provider";
+import {exit} from "process";
 
 /**
  * Class to add a cognito user. The AWS account should be defined in environment variables
@@ -33,6 +34,7 @@ export class AddUser {
       console.log(`User ${userName} added successfully!`, responseAdd);
     } catch (error) {
       console.error("Error adding user:", error);
+      exit();
     }
      const paramsPerm = {
        UserPoolId: this.poolId,
@@ -45,6 +47,7 @@ export class AddUser {
       console.log(`User ${userName} password set successfully!`, responsePass);
     } catch (error) {
       console.error("Error setting user password:", error);
+      exit();
     }
   }
 }
