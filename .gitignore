@@ -25,3 +25,7 @@ lerna-debug.log*
 
 # Misc
 .DS_Store
+dist
+/.idea
+/dist
+
