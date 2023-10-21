@@ -40,10 +40,25 @@ export class GroupList extends BaseClient {
         "data-partition-id": "osdu",
       },
     };
-
-    const { data } = await axios.get(url, config);
-
-    return data;
+    try {
+      const { data } = await axios.get(url, config);
+      return data;
+    } catch (error) {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.error("Error data:", error.response.data);
+          console.error("Error status:", error.response.status);
+          console.error("Error headers:", error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          console.error("No response received:", error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.error("Error", error.message);
+        }
+        throw error;
+    }
   }
 }
 

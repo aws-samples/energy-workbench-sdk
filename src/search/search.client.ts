@@ -59,7 +59,7 @@ export class SearchClient extends BaseClient {
           // Something happened in setting up the request that triggered an Error
           console.error("Error", error.message);
         }
-        throw error;  // Optionally, you can re-throw the error if you want it to propagate
+        throw error;
     }
   }
 }
