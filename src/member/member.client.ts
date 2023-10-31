@@ -1,13 +1,6 @@
 import axios from "axios";
 
 import { BaseClient } from "../base";
-import {
-  MemberRequest,
-  MemberResponse,
-  AddMember
-} from "./member.models";
-import {MemberList} from "./member.types";
-import {GroupResponse} from "../group/group.models";
 
 /**
  * Class to list members for a group
@@ -46,20 +39,20 @@ export class Members extends BaseClient {
       const { data } = await axios.get(url, config);
       return data;
     } catch (error) {
-        if (error.response) {
-          // The request was made and the server responded with a status code
-          // that falls out of the range of 2xx
-          console.error("Error data:", error.response.data);
-          console.error("Error status:", error.response.status);
-          console.error("Error headers:", error.response.headers);
-        } else if (error.request) {
-          // The request was made but no response was received
-          console.error("No response received:", error.request);
-        } else {
-          // Something happened in setting up the request that triggered an Error
-          console.error("Error", error.message);
-        }
-        throw error;
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        console.error("Error data:", error.response.data);
+        console.error("Error status:", error.response.status);
+        console.error("Error headers:", error.response.headers);
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.error("No response received:", error.request);
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.error("Error", error.message);
+      }
+      throw error;
     }
   }
 }
@@ -85,8 +78,11 @@ export class MemberAdd extends BaseClient {
    * @param role - The role assigned to the member in the group.
    * @returns Promise with adding group result
    */
-  async add(groupName: string, memberName: string, role: string): Promise<MemberAdd> {
-
+  async add(
+    groupName: string,
+    memberName: string,
+    role: string
+  ): Promise<MemberAdd> {
     const auth = await this.getAuthToken();
 
     const url = `${this.baseURL}/api/entitlements/v2/groups/${groupName}/members`;
@@ -99,28 +95,28 @@ export class MemberAdd extends BaseClient {
       },
     };
     const request = {
-      "email": memberName,
-      "role": role
+      email: memberName,
+      role: role,
     };
 
     try {
       const { data } = await axios.post(url, request, config);
       return data;
     } catch (error) {
-        if (error.response) {
-          // The request was made and the server responded with a status code
-          // that falls out of the range of 2xx
-          console.error("Error data:", error.response.data);
-          console.error("Error status:", error.response.status);
-          console.error("Error headers:", error.response.headers);
-        } else if (error.request) {
-          // The request was made but no response was received
-          console.error("No response received:", error.request);
-        } else {
-          // Something happened in setting up the request that triggered an Error
-          console.error("Error", error.message);
-        }
-        throw error;
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        console.error("Error data:", error.response.data);
+        console.error("Error status:", error.response.status);
+        console.error("Error headers:", error.response.headers);
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.error("No response received:", error.request);
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.error("Error", error.message);
+      }
+      throw error;
     }
   }
 }
@@ -159,20 +155,20 @@ export class Groups extends BaseClient {
       const { data } = await axios.get(url, config);
       return data;
     } catch (error) {
-        if (error.response) {
-          // The request was made and the server responded with a status code
-          // that falls out of the range of 2xx
-          console.error("Error data:", error.response.data);
-          console.error("Error status:", error.response.status);
-          console.error("Error headers:", error.response.headers);
-        } else if (error.request) {
-          // The request was made but no response was received
-          console.error("No response received:", error.request);
-        } else {
-          // Something happened in setting up the request that triggered an Error
-          console.error("Error", error.message);
-        }
-        throw error;
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        console.error("Error data:", error.response.data);
+        console.error("Error status:", error.response.status);
+        console.error("Error headers:", error.response.headers);
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.error("No response received:", error.request);
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.error("Error", error.message);
+      }
+      throw error;
     }
   }
 }
