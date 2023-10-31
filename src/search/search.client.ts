@@ -1,11 +1,6 @@
 import axios from "axios";
 
-import {
-  QueryRequest,
-  QueryResponse,
-  CursorQueryRequest,
-  CursorQueryResponse,
-} from "./search.models";
+import { QueryRequest, QueryResponse } from "./search.types";
 import { BaseClient } from "../base";
 
 /**
@@ -46,20 +41,20 @@ export class SearchClient extends BaseClient {
       const { data } = await axios.post(url, request, config);
       return data;
     } catch (error) {
-        if (error.response) {
-          // The request was made and the server responded with a status code
-          // that falls out of the range of 2xx
-          console.error("Error data:", error.response.data);
-          console.error("Error status:", error.response.status);
-          console.error("Error headers:", error.response.headers);
-        } else if (error.request) {
-          // The request was made but no response was received
-          console.error("No response received:", error.request);
-        } else {
-          // Something happened in setting up the request that triggered an Error
-          console.error("Error", error.message);
-        }
-        throw error;
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        console.error("Error data:", error.response.data);
+        console.error("Error status:", error.response.status);
+        console.error("Error headers:", error.response.headers);
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.error("No response received:", error.request);
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.error("Error", error.message);
+      }
+      throw error;
     }
   }
 }
