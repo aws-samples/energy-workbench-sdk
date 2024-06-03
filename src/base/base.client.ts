@@ -39,7 +39,7 @@ export abstract class BaseClient {
       logger.error(
         `Missing environment variables: ${missingEnvVars.join(", ")}`
       );
-      process.exit(1);
+      throw new Error(`Missing environment variables: ${missingEnvVars.join(", ")}`);
     }
 
     this.cognito = new CognitoToken(
