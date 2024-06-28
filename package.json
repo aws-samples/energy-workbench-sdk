@@ -18,14 +18,14 @@
   "author": "AWS for Energy",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^20.6.3",
-    "microbundle": "^0.15.0"
+    "@types/node": "^20.14.2",
+    "microbundle": "^0.15.1"
   },
   "dependencies": {
-    "@aws-sdk/client-cognito-identity-provider": "^3.433.0",
-    "axios": "^1.6.0",
-    "pino": "^8.16.1",
-    "pino-pretty": "^10.2.3"
+    "@aws-sdk/client-cognito-identity-provider": "^3.590.0",
+    "axios": "^1.7.2",
+    "pino": "^9.1.0",
+    "pino-pretty": "^11.1.0"
   },
   "files": [
     "dist"
