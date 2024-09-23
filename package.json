@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-cognito-identity-provider": "^3.590.0",
-    "axios": "^1.7.2",
+    "axios": ">=1.7.4",
     "pino": "^9.1.0",
     "pino-pretty": "^11.1.0"
   },
