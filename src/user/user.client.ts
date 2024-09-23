@@ -36,7 +36,7 @@ export class AddUser {
       const responseAdd = await this.cognitoClient.send(
         new AdminCreateUserCommand(params)
       );
-      console.log(`User ${userName} added successfully!`, responseAdd);
+      console.log('User added successfully!', { userName, responseAdd });
     } catch (error) {
       console.error("Error adding user:", error);
       exit();
@@ -51,7 +51,7 @@ export class AddUser {
       const responsePass = await this.cognitoClient.send(
         new AdminSetUserPasswordCommand(paramsPerm)
       );
-      console.log(`User ${userName} password set successfully!`, responsePass);
+      console.log('User password set successfully!', { userName, responsePass });
     } catch (error) {
       console.error("Error setting user password:", error);
       exit();
