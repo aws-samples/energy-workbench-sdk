@@ -28,4 +28,5 @@ lerna-debug.log*
 dist
 /.idea
 /dist
+package-lock.json
 
